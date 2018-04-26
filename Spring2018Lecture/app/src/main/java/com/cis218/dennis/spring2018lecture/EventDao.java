@@ -15,7 +15,7 @@ public interface EventDao{
     @Query( "select * from events" )
     List<Event> getAll();
 
-    @Query( "select * from events where name=':event_name' limit 1")
+    @Query( "select * from events where name=:event_name limit 1")
     Event findByName( String event_name );
 
     @Insert

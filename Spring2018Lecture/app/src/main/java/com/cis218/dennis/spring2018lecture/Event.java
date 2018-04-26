@@ -21,10 +21,10 @@ public class Event {
     private String name;
     @ColumnInfo( name = "description" )
     private String description;
-    @ColumnInfo( name = "startDate" )
-    private Date startDate;
-    @ColumnInfo( name = "endDate" )
-    private Date endDate;
+//    @ColumnInfo( name = "startDate" )
+//    private Date startDate;
+//    @ColumnInfo( name = "endDate" )
+//    private Date endDate;
 //    private Time startTime;
 //    private Time endTime;
 
@@ -51,22 +51,22 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+//
+//    public Date getStartDate() {
+//        return startDate;
+//    }
+//
+//    public void setStartDate(Date startDate) {
+//        this.startDate = startDate;
+//    }
+//
+//    public Date getEndDate() {
+//        return endDate;
+//    }
+//
+//    public void setEndDate(Date endDate) {
+//        this.endDate = endDate;
+//    }
 
 //    public Time getStartTime() {
 //        return startTime;
