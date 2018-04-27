@@ -1,5 +1,6 @@
 package com.cis218.dennis.spring2018lecture;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -17,6 +18,9 @@ public interface EventDao{
 
     @Query( "select * from events where name=:event_name limit 1")
     Event findByName( String event_name );
+
+    @Query( "select * from events where eventID=:eventID limit 1")
+    LiveData<Event> findByRecordNum(int eventID );
 
     @Insert
     void addEvent(Event event);

@@ -1,5 +1,6 @@
 package com.cis218.dennis.spring2018lecture;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -14,11 +15,23 @@ import android.widget.Toast;
  */
 
 public class BaseActivity extends AppCompatActivity {
+
+    public AppDatabase eventDatabase;
+
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState,
-                         @Nullable PersistableBundle persistentState){
-        super.onCreate( savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState){
+        super.onCreate( savedInstanceState);
         setContentView( R.layout.activity_base );
+
+        if (eventDatabase == null){
+            eventDatabase = Room.databaseBuilder(
+                    getApplicationContext(),
+                    AppDatabase.class,
+                    "events.db")
+                    .fallbackToDestructiveMigration()
+                    .build();
+        }
     }
 
     @Override
@@ -30,15 +43,16 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch( item.getItemId() ){
             case R.id.menuEdit :
                 // Switch to menu edit
-                Intent intent = new Intent(this, EditActivity.class);
+                intent = new Intent(this, EditActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.menuViewAll :
                 // Switch to view all
-                Intent intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
             default :

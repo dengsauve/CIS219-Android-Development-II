@@ -21,20 +21,13 @@ public class MainActivity extends BaseActivity {
     Date startDate;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         edtEventName = findViewById( R.id.edtEventName );
         edtEventDescription = findViewById( R.id.edtEventDescription );
         edtStartDate = findViewById( R.id.edtStartDate );
-
-        eventDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                AppDatabase.class,
-                "events.db")
-                .fallbackToDestructiveMigration()
-                .build();
     }
 
     public void saveEventOnClick( View v ){
