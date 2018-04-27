@@ -3,7 +3,9 @@ package com.cis218.dennis.spring2018lecture;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.persistence.room.Room;
+import android.content.DialogInterface;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,5 +35,27 @@ public class EditActivity extends BaseActivity {
                 edtEditAttendees.setText( event.getAttendees() );
             }
         });
+    }
+
+    public void deleteOnClick( View v ){
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
+        builder.setMessage("Are you sure you want to delete this event?")
+                .setCancelable(true)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Perform the deletion here
+                        toastIt("Record Deleted!");
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Cancel Out
+                        toastIt("You Pressed No");
+                    }
+                })
+                .create()
+                .show();
     }
 }
