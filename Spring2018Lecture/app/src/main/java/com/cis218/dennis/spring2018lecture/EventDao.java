@@ -16,6 +16,9 @@ public interface EventDao{
     @Query( "select * from events" )
     List<Event> getAll();
 
+    @Query( "select name from events" )
+    LiveData<List<String>> getAllNames();
+
     @Query( "select * from events where name=:event_name limit 1")
     Event findByName( String event_name );
 
